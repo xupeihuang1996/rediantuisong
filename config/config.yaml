@@ -69,8 +69,20 @@ platforms:
       name: "凤凰网"
     - id: "cls-hot"
       name: "财联社热门"
-
-
+    - id: "tieba"
+      name: "贴吧"
+    - id: "bilibili-hot-search"
+      name: "bilibili 热搜"
+    - id: "weibo"
+      name: "微博"
+    - id: "github"
+      name: "GitHub"
+    - id: "ithome"
+      name: "IT之家"
+    - id: "tencent-hot"
+      name: "腾讯新闻 综合早报"
+    - id: "kuan"
+      name: "酷安"
 
 # ===============================================================
 # 3. 数据源 - RSS 订阅
