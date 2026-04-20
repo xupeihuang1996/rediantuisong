@@ -41,7 +41,7 @@ app:
 # ===============================================================
 schedule:
   enabled: true                         # 是否启用调度系统
-  preset: "custom"             # 预设模板名称（见上方说明）
+  preset: "morning_evening"             # 预设模板名称（见上方说明）
 
 
 # ===============================================================
@@ -59,14 +59,10 @@ platforms:
       name: "今日头条"
     - id: "baidu"
       name: "百度热搜"
+    - id: "douyin"
+      name: "抖音"
     - id: "wallstreetcn-hot"
       name: "华尔街见闻"
-    - id: "thepaper"
-      name: "澎湃新闻"
-    - id: "cls-hot"
-      name: "财联社热门"
-    - id: "ifeng"
-      name: "凤凰网"
 
 
 
@@ -103,18 +99,10 @@ rss:
   # - 正整数：覆盖全局设置，只推送此天数内的文章
   # - 0：禁用此频道的新鲜度过滤，推送所有文章
   feeds:
-    - id: "hacker-news"
-      name: "Hacker News"
-      url: "https://hnrss.org/frontpage"
-
-    - id: "yahoo-finance"
-      name: "雅虎财经"
-      url: "https://finance.yahoo.com/news/rssindex"
-
     - id: "GZ"
       name: "广州本地"
       url: "https://www.bing.com/news/search?q=广州&format=RSS"
-      max_age_days: 2
+      max_age_days: 1
 
     - id: "QS"
       name: "趋势"
@@ -140,6 +128,9 @@ rss:
       name: "政策"
       url: "https://www.bing.com/news/search?q=政策&format=RSS"
       max_age_days: 1
+
+
+
 
 
 
@@ -274,15 +265,15 @@ display:
   #   2. 下方 regions 中对应开关为 true
   region_order:
     - ai_analysis                       # 5️⃣ AI 分析区域
-    - new_items                       # 1️⃣ 新增热点区域
     - hotlist                       # 2️⃣ 热榜区域（关键词匹配 / AI 智能筛选）
     - rss                       # 3️⃣ RSS 订阅区域
+    - new_items                       # 1️⃣ 新增热点区域
     - standalone                       # 4️⃣ 独立展示区
   regions:
     ai_analysis: true # AI 分析区域
-    new_items: false # 新增热点区域（含热榜新增 + RSS 新增）
     hotlist: true # 热榜区域（关键词匹配 / AI 智能筛选）
     rss: true # RSS 订阅区域
+    new_items: false # 新增热点区域（含热榜新增 + RSS 新增）
     standalone: false # 独立展示区（完整热榜/RSS，不受关键词过滤）
   standalone:
     platforms: ["zhihu","wallstreetcn-hot","toutiao","ifeng"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
@@ -502,7 +493,7 @@ ai_analysis:
   mode: "follow_report"
 
   # 分析内容配置
-  max_news_for_analysis: 200        # 热榜+RSS 合计参与分析的新闻数量上限（控制成本关键项）
+  max_news_for_analysis: 150        # 热榜+RSS 合计参与分析的新闻数量上限（控制成本关键项）
                                     # 热榜优先占用配额，RSS 使用剩余配额；独立展示区不受此限制
                                     # 推送消息顶部会显示实际的 AI 分析数供参考
 
@@ -516,7 +507,7 @@ ai_analysis:
 
   include_rss: true                # 是否包含 RSS 内容进行分析
   
-  include_standalone: true          # 是否将独立展示区数据纳入 AI 分析
+  include_standalone: false          # 是否将独立展示区数据纳入 AI 分析
                                     # 数据源列表来自 display.standalone.platforms / display.standalone.rss_feeds
 
   include_rank_timeline: true       # 是否传递完整排名时间线
