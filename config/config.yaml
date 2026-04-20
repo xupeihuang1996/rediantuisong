@@ -224,7 +224,7 @@ rss:
 # - incremental：最少打扰，只看新增
 # ===============================================================
 report:
-  mode: "daily"                     # daily | current | incremental（schedule 开启时作为默认值）
+  mode: "current"                     # daily | current | incremental（schedule 开启时作为默认值）
 
   display_mode: "keyword"             # 分组维度: keyword | platform
                                       # keyword: 按关键词分组显示（默认）
@@ -336,8 +336,8 @@ display:
     new_items: false # 新增热点区域（含热榜新增 + RSS 新增）
     standalone: false # 独立展示区（完整热榜/RSS，不受关键词过滤）
   standalone:
-    platforms: ["zhihu","wallstreetcn-hot","toutiao","ifeng","douyin"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
-    rss_feeds: ["hacker-news","GZ","yahoo-finance","QS","jingji","AIV","jiaoyu","zhengce"] # RSS 源 ID 列表（如 ["hacker-news"]）
+    platforms: ["zhihu","wallstreetcn-hot","toutiao","ifeng"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
+    rss_feeds: ["hacker-news","GZ","yahoo-finance","QS","jingji","AIV","jiaoyu","zhengce","PC","tiktok","kuaj","comfyui","AIGC","DS","1","AI","KJ"] # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 20                     # 每个源最多展示条数（0=不限制）
 
 
