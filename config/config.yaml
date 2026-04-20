@@ -159,6 +159,10 @@ rss:
       url: "https://www.bing.com/news/search?q=趋势&format=RSS"
       max_age_days: 1
 
+    - id: "gz"
+      name: "广州本地"
+      url: "https://www.bing.com/news/search?q=广州本地新闻&format=RSS"
+      max_age_days: 1
 
 # ═══════════════════════════════════════════════════════════════
 #                    TrendRadar 配置文件
