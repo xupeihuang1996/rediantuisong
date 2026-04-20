@@ -63,6 +63,12 @@ platforms:
       name: "抖音"
     - id: "wallstreetcn-hot"
       name: "华尔街见闻"
+    - id: "thepaper"
+      name: "澎湃新闻"
+    - id: "ifeng"
+      name: "凤凰网"
+    - id: "cls-hot"
+      name: "财联社热门"
 
 
 
@@ -129,6 +135,60 @@ rss:
       url: "https://www.bing.com/news/search?q=政策&format=RSS"
       max_age_days: 1
 
+    - id: "KJ"
+      name: "科技编程"
+      url: "https://www.bing.com/news/search?q=科技+编程&format=RSS"
+      max_age_days: 1
+
+    - id: "AI"
+      name: "人工智能"
+      url: "https://www.bing.com/news/search?q=人工智能&format=RSS"
+      max_age_days: 1
+
+    - id: "1"
+      name: "财经"
+      url: "https://www.bing.com/news/search?q=财经&format=RSS"
+      max_age_days: 1
+
+    - id: "DS"
+      name: "电商"
+      url: "https://www.bing.com/news/search?q=电商&format=RSS"
+      max_age_days: 1
+
+    - id: "AIGC"
+      name: "AIGC"
+      url: "https://www.bing.com/news/search?q=AIGC&format=RSS"
+      max_age_days: 1
+
+    - id: "comfyui"
+      name: "comfyui"
+      url: "https://www.bing.com/news/search?q=comfyUI&format=RSS"
+      max_age_days: 1
+
+    - id: "kuaj"
+      name: "跨境"
+      url: "https://www.bing.com/news/search?q=跨境&format=RSS"
+      max_age_days: 1
+
+    - id: "tiktok"
+      name: "TIKTOK"
+      url: "https://www.bing.com/news/search?q=tiktok&format=RSS"
+      max_age_days: 1
+
+    - id: "PC"
+      name: "电脑/硬件"
+      url: "https://www.bing.com/news/search?q=电脑+OR+PC+OR+硬件&format=RSS"
+      max_age_days: 1
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -166,7 +226,7 @@ rss:
 report:
   mode: "daily"                     # daily | current | incremental（schedule 开启时作为默认值）
 
-  display_mode: "platform"             # 分组维度: keyword | platform
+  display_mode: "keyword"             # 分组维度: keyword | platform
                                       # keyword: 按关键词分组显示（默认）
                                       # platform: 按平台/来源分组显示
 
@@ -276,7 +336,7 @@ display:
     new_items: false # 新增热点区域（含热榜新增 + RSS 新增）
     standalone: false # 独立展示区（完整热榜/RSS，不受关键词过滤）
   standalone:
-    platforms: ["zhihu","wallstreetcn-hot","toutiao","ifeng"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
+    platforms: ["zhihu","wallstreetcn-hot","toutiao","ifeng","douyin"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
     rss_feeds: ["hacker-news","GZ","yahoo-finance","QS","jingji","AIV","jiaoyu","zhengce"] # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 20                     # 每个源最多展示条数（0=不限制）
 
