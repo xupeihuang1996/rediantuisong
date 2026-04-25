@@ -265,19 +265,6 @@ presets:
         report_mode: "daily"       # 当日全部新闻汇总
         # once 继承 default（analyze: true, push: true）→ 只推/分析一次
 
-      weekend_free:
-        name: "周末自由"
-        start: "08:00"
-        end: "23:00"
-        ai_mode: "current"         # AI 分析当前榜单
-        push: true                 # 有新增就推送
-        report_mode: "incremental" # 增量模式：有新增才推，没有就安静
-        once:
-          analyze: false           # 不限制分析次数
-          push: false              # 不限制推送次数
-
-    # 工作日使用三段式推送；周末使用增量自由模式
-        collect: false
       yejian:
         name: "夜间总结"
         start: "22:00"
@@ -290,9 +277,6 @@ presets:
     day_plans:
       workday:
         periods: ["morning_briefing", "noon_update", "closing_summary", "yejian"]
-      weekend:
-        periods: ["weekend_free", "yejian"]
-
     week_map:
       1: "workday"                 # 周一 → 工作日计划
       2: "workday"
