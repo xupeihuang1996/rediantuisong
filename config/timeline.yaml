@@ -9,7 +9,7 @@
 # 只需在 config.yaml 中选择一个预设模板即可：
 #
 #   schedule:
-#     preset: "morning_evening"    ← 改这里就行
+#     preset: "office_hours"    ← 改这里就行
 #
 #
 # 可视化配置编辑器地址: https://sansan0.github.io/TrendRadar/
@@ -231,8 +231,8 @@ presets:
       push: false                  # 默认不推送
       report_mode: "current"
       once:
-        analyze: true              # 每个时段只分析一次
-        push: true                 # 每个时段只推送一次
+        analyze: false              # 每个时段只分析一次
+        push: false                 # 每个时段只推送一次
 
     periods:
       morning_briefing:
@@ -245,6 +245,9 @@ presets:
         report_mode: "current"     # 当前在榜的新闻
         # once 继承 default（analyze: true, push: true）→ 只推/分析一次
 
+        once:
+          analyze: true
+          push: true
       noon_update:
         name: "午间热点"
         start: "13:00"
@@ -255,6 +258,9 @@ presets:
         # once 继承 default（push: true）→ 只推一次
 
         analyze: true
+        once:
+          analyze: true
+          push: true
       closing_summary:
         name: "收工汇总"
         start: "17:00"
@@ -265,6 +271,9 @@ presets:
         report_mode: "daily"       # 当日全部新闻汇总
         # once 继承 default（analyze: true, push: true）→ 只推/分析一次
 
+        once:
+          analyze: true
+          push: true
       yejian:
         name: "夜间总结"
         start: "22:00"
@@ -274,6 +283,9 @@ presets:
         push: true
         report_mode: daily
         ai_mode: daily
+        once:
+          analyze: true
+          push: true
     day_plans:
       workday:
         periods: ["morning_briefing", "noon_update", "closing_summary", "yejian"]
