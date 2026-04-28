@@ -9,7 +9,7 @@
 # 只需在 config.yaml 中选择一个预设模板即可：
 #
 #   schedule:
-#     preset: "office_hours"    ← 改这里就行
+#     preset: "morning_evening"    ← 改这里就行
 #
 #
 # 可视化配置编辑器地址: https://sansan0.github.io/TrendRadar/
@@ -231,13 +231,13 @@ presets:
       push: false                  # 默认不推送
       report_mode: "current"
       once:
-        analyze: false              # 每个时段只分析一次
-        push: false                 # 每个时段只推送一次
+        analyze: true              # 每个时段只分析一次
+        push: true                 # 每个时段只推送一次
 
     periods:
       morning_briefing:
         name: "到岗速览"
-        start: "08:30"
+        start: "08:00"
         end: "09:00"
         analyze: true              # AI 分析当前热点
         ai_mode: "current"         # AI 分析当前榜单
@@ -245,60 +245,52 @@ presets:
         report_mode: "current"     # 当前在榜的新闻
         # once 继承 default（analyze: true, push: true）→ 只推/分析一次
 
-        once:
-          analyze: true
-          push: true
-        collect: true
       noon_update:
         name: "午间热点"
         start: "12:00"
-        end: "12:30"
+        end: "13:00"
         push: true                 # 午间推送当前在榜热点
         report_mode: "current"     # 当前在榜的新闻
         # analyze 继承 default: false → 午间不做 AI 分析，节省 API
         # once 继承 default（push: true）→ 只推一次
 
-        analyze: true
-        once:
-          analyze: true
-          push: true
-        collect: true
       closing_summary:
         name: "收工汇总"
         start: "18:00"
-        end: "18:30"
+        end: "19:00"
         analyze: true              # AI 做全天汇总分析
         ai_mode: "daily"           # AI 也分析全天内容
         push: true                 # 下班前推送当日完整汇总
         report_mode: "daily"       # 当日全部新闻汇总
         # once 继承 default（analyze: true, push: true）→ 只推/分析一次
 
+      weekend_free:
+        name: "周末自由"
+        start: "08:00"
+        end: "23:00"
+        ai_mode: "current"         # AI 分析当前榜单
+        push: true                 # 有新增就推送
+        report_mode: "incremental" # 增量模式：有新增才推，没有就安静
         once:
-          analyze: true
-          push: true
-      yejian:
-        name: "夜间总结"
-        start: "22:00"
-        end: "22:30"
-        collect: true
+          analyze: false           # 不限制分析次数
+          push: false              # 不限制推送次数
+
+    # 工作日使用三段式推送；周末使用增量自由模式
         analyze: true
-        push: true
-        report_mode: daily
-        ai_mode: daily
-        once:
-          analyze: true
-          push: true
     day_plans:
       workday:
-        periods: ["morning_briefing", "noon_update", "closing_summary", "yejian"]
+        periods: ["morning_briefing", "noon_update", "closing_summary"]
+      weekend:
+        periods: ["weekend_free"]  # 周末：有新增就推，不打扰睡眠
+
     week_map:
       1: "workday"                 # 周一 → 工作日计划
       2: "workday"
       3: "workday"
       4: "workday"
       5: "workday"
-      6: "workday"                 # 周六 → 周末计划
-      7: "workday"                 # 周日 → 周末计划
+      6: "weekend"                 # 周六 → 周末计划
+      7: "weekend"                 # 周日 → 周末计划
 
 
   # ───────────────────────────────────────────────────────────
@@ -415,7 +407,7 @@ custom:
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   default:
     collect: true                  # 是否采集数据（爬取热榜 + RSS）
-    analyze: true                 # 是否执行 AI 分析
+    analyze: false                 # 是否执行 AI 分析
     ai_mode: "current"            # AI 分析模式:
                                    #   follow_report → 跟随 report_mode
                                    #   daily         → 强制全天汇总
@@ -490,10 +482,9 @@ custom:
       report_mode: "incremental"   # 只推新增内容
       # once 继承 default（push: true）→ 窗口内只推一次
 
-      analyze: true
     weekend_morning:
       name: "周末早间"
-      start: "09:00"
+      start: "10:00"
       end: "12:00"                 # 跨度 2h
       # frequency_file: "xxx.txt"               # 关键词文件（可选，位于 config/custom/keyword/）
       # interests_file: "xxx.txt"                # AI 兴趣文件（可选，位于 config/custom/ai/）
@@ -502,7 +493,6 @@ custom:
       report_mode: "daily"         # 周末看全天汇总
       # once 继承 default（push: true）→ 窗口内只推一次
 
-      analyze: true
     evening_summary:
       name: "晚间汇总"
       start: "19:00"
