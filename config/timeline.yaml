@@ -277,9 +277,18 @@ presets:
 
     # 工作日使用三段式推送；周末使用增量自由模式
         analyze: true
+      yewan:
+        name: "夜晚总结"
+        start: "22:00"
+        end: "23:00"
+        collect: true
+        analyze: true
+        push: true
+        report_mode: daily
+        ai_mode: daily
     day_plans:
       workday:
-        periods: ["morning_briefing", "noon_update", "closing_summary"]
+        periods: ["morning_briefing", "noon_update", "closing_summary", "yewan"]
       weekend:
         periods: ["weekend_free"]  # 周末：有新增就推，不打扰睡眠
 
