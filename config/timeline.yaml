@@ -254,14 +254,15 @@ presets:
         # analyze 继承 default: false → 午间不做 AI 分析，节省 API
         # once 继承 default（push: true）→ 只推一次
 
+        analyze: true
       closing_summary:
         name: "收工汇总"
         start: "18:00"
         end: "19:00"
         analyze: true              # AI 做全天汇总分析
-        ai_mode: "daily"           # AI 也分析全天内容
+        ai_mode: "current"           # AI 也分析全天内容
         push: true                 # 下班前推送当日完整汇总
-        report_mode: "daily"       # 当日全部新闻汇总
+        report_mode: "current"       # 当日全部新闻汇总
         # once 继承 default（analyze: true, push: true）→ 只推/分析一次
 
       weekend_free:
@@ -277,10 +278,10 @@ presets:
 
     # 工作日使用三段式推送；周末使用增量自由模式
         analyze: true
-      yewan:
-        name: "夜晚总结"
-        start: "22:00"
-        end: "23:00"
+      huizong:
+        name: "夜晚汇总"
+        start: "21:00"
+        end: "22:00"
         collect: true
         analyze: true
         push: true
@@ -288,7 +289,7 @@ presets:
         ai_mode: daily
     day_plans:
       workday:
-        periods: ["morning_briefing", "noon_update", "closing_summary", "yewan"]
+        periods: ["morning_briefing", "noon_update", "closing_summary", "huizong"]
       weekend:
         periods: ["weekend_free"]  # 周末：有新增就推，不打扰睡眠
 
